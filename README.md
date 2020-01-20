@@ -16,6 +16,7 @@ composer require infinityloop-dev/lazy-component
 
 - PHP >= 7.4
 - [nette/application](https://github.com/nette/application)
+- [nette/utils](https://github.com/nette/utils)
 
 ## How to use
 
