@@ -21,11 +21,12 @@ abstract class LazyComponent extends \Nette\Application\UI\Control
 
     public function render() : void
     {
-        if (!$this->loaded) {
-            $this->template->setFile(__DIR__ . '/emptyComponent.latte');
-        } else {
+        $this->template->setFile(__DIR__ . '/LazyComponent.latte');
+        $this->template->loaded = $this->loaded;
+
+        if ($this->loaded) {
             $this->beforeRender();
-            $this->template->setFile(\str_replace('.php', '.latte', static::getReflection()->getFileName()));
+            $this->template->lazyTemplate = \str_replace('.php', '.latte', static::getReflection()->getFileName());
         }
 
         $this->template->render();
