@@ -31,6 +31,15 @@ abstract class LazyComponent extends \Nette\Application\UI\Control
 
         $this->template->render();
     }
+    
+    public function redrawControl(string $snippet = null, bool $redraw = true): void
+    {
+        if (\is_string($snippet) && !\Nette\Utils\Strings::startsWith($snippet, 'lazyComponent_')) {
+            $this->redrawControl('lazyComponent_snippetArea');
+        }
+
+        parent::redrawControl($snippet, $redraw);
+    }
 
     public function saveState(array &$params): void
     {
