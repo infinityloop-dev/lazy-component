@@ -3,7 +3,7 @@
         {if $loaded}
             {include $lazyTemplate}
         {else}
-            <div class="p-5 d-flex justify-content-center align-items-center">{icon spinner, type => 'r', spin => true}</div>
+            {include $emptyTemplate}
         {/if}
     {/snippetArea}
 {/snippet}
