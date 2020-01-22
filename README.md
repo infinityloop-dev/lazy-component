@@ -4,6 +4,8 @@
 
 ## Introduction
 
+Component which renders empty in the beggining and is populated by signal request.
+
 ## Installation
 
 Install package using composer
