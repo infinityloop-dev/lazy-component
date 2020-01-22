@@ -50,7 +50,7 @@ abstract class LazyComponent extends \Nette\Application\UI\Control
     public function loadState(array $params): void
     {
         parent::loadState($params);
-        $this->loaded = (bool) ($params['lazyComponent_loaded'] ?? $this->loaded);
+        $this->loaded = (bool) ($params['lazyComponent_loaded'] ?? ($this->getPresenter()->isAjax()));
     }
 
     protected function beforeRender() : void
