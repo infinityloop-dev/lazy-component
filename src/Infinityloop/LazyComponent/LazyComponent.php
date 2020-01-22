@@ -6,6 +6,8 @@ namespace Infinityloop\LazyComponent;
 
 abstract class LazyComponent extends \Nette\Application\UI\Control
 {
+    protected const EMPTY_TEMPLATE = __DIR__ . '/emptyTemplate.latte';
+
     private bool $loaded = false;
 
     public function handleLoadComponent() : void
@@ -23,6 +25,7 @@ abstract class LazyComponent extends \Nette\Application\UI\Control
     {
         $this->template->setFile(__DIR__ . '/LazyComponent.latte');
         $this->template->loaded = $this->loaded;
+        $this->template->emptyTemplate = static::EMPTY_TEMPLATE;
 
         if ($this->loaded) {
             $this->beforeRender();
@@ -50,7 +53,7 @@ abstract class LazyComponent extends \Nette\Application\UI\Control
     public function loadState(array $params): void
     {
         parent::loadState($params);
-        $this->loaded = (bool) ($params['lazyComponent_loaded'] ?? $this-loaded);
+        $this->loaded = (bool) ($params['lazyComponent_loaded'] ?? $this->loaded);
     }
 
     protected function beforeRender() : void
