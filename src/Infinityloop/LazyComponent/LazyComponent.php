@@ -10,6 +10,11 @@ abstract class LazyComponent extends \Nette\Application\UI\Control
 
     private bool $loaded = false;
 
+    public function setLoaded(bool $loaded = true) : void
+    {
+        $this->loaded = $loaded;
+    }
+    
     public function handleLoadComponent() : void
     {
         $this->loaded = true;
