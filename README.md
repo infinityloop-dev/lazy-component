@@ -34,15 +34,19 @@ composer require infinityloop-dev/lazy-component
     - File extension is simply swapped to `.latte`.
 - By default the FontAwesome 5 spinner is used as placeholder. Override `EMPTY_TEMPLATE` constant to use different empty template file.
 
-### Example with tab and lazy tab content
+### Example lazy tab content
+
+Tab header:
 ```
 <li class"tab" data-load-component="{control myComponent:loadComponentLink}">Tab name</li>
 ```
+Tab content:
 ```
 <div class="tab-content">
     {control myComponent}
 </div>
 ```
+JQuery ajax request on click:
 ```
 $(".tab[data-load-component]").one('click',function (event) {
     const link = $(this).data("load-component");
